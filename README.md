@@ -2,6 +2,10 @@
 
 A sloppy JMDict parser
 
+## The JMDict Project
+
+Dictionary file acquired from [The JMDict Project](http://www.edrdg.org/jmdict/j_jmdict.html).
+
 ## Installation
 
 Add this line to your application's Gemfile:
