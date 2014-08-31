@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = JMDict::VERSION
   spec.authors       = ["Brad Chase"]
   spec.email         = ["brad@webappfromscratch.com"]
-  spec.summary       = %q{A sloppy JMDict parser}
-  spec.description   = %q{A sloppy JMDict parser}
+  spec.summary       = %q{A simple JMDict parser}
+  spec.description   = %q{A simple JMDict parser}
   spec.homepage      = ""
   spec.license       = "MIT"
 
