@@ -8,11 +8,11 @@ module JMDict
 
     def self.component_xpaths
       @@component_xpaths ||= {
-        eid:     "entry/ent_seq",
-        kanji:   "entry/k_ele/keb",
-        kana:    "entry/r_ele/reb",
-        glosses: "entry/sense/gloss",
-        pos:     "entry/sense/pos|misc|dial",
+        eid:     "ent_seq",
+        kanji:   "k_ele/keb",
+        kana:    "r_ele/reb",
+        glosses: "sense/gloss",
+        pos:     "sense/pos|misc|dial",
       }
     end
 
@@ -20,17 +20,29 @@ module JMDict
       component_xpaths[attribute]
     end
 
-    def self.parse_from_xml_element_str(str)
-      xml, entry = Nokogiri::XML(str), new
+    def self.parse_from_nokogiri(xml)
+      new.tap do |entry|
+        entry.eid = xml.xpath(xpath_for(:eid)).first.text
 
-      entry.eid = xml.xpath(xpath_for(:eid)).first.text
-
-      %i[kanji kana glosses pos].each do |attribute|
-        vals = xml.xpath(xpath_for(attribute)).map(&:text)
-        entry.send :"#{attribute}=", vals unless vals.empty?
+        %i[kanji kana glosses pos].each do |attribute|
+          vals = xml.xpath(xpath_for(attribute)).map(&:text)
+          entry.send :"#{attribute}=", vals unless vals.empty?
+        end
       end
-
-      entry
     end
+
+# # old state machine way
+#     def self.parse_from_xml_element_str(str)
+#       xml, entry = Nokogiri::XML(str), new
+#
+#       entry.eid = xml.xpath(xpath_for(:eid)).first.text
+#
+#       %i[kanji kana glosses pos].each do |attribute|
+#         vals = xml.xpath(xpath_for(attribute)).map(&:text)
+#         entry.send :"#{attribute}=", vals unless vals.empty?
+#       end
+#
+#       entry
+#     end
   end
 end
