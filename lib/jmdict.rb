@@ -25,23 +25,4 @@ module JMDict
       yield entry
     end
   end
-
-# # old unnecessary state machine
-#   def self.each_entry(&block)
-#     str = ''
-#     file.each.with_index do |line, idx|
-#       if str.empty?
-#         str << line if line.match ENTRY_OPEN_TAG
-#       else
-#         str << line 
-#
-#         if line.match ENTRY_CLOSE_TAG
-#           entry = Entry.parse_from_xml_element_str(str)
-#           yield entry
-#           puts entry.eid if (idx.to_i % 10_000) == 0
-#           str = ''
-#         end
-#       end
-#     end
-#   end
 end
