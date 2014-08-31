@@ -16,9 +16,6 @@ module JMDict
     Nokogiri::XML(file)
   end
 
-  ENTRY_OPEN_TAG  = %r{<entry}
-  ENTRY_CLOSE_TAG = %r{</entry}
-
   def self.each_entry(&block)
     xml.xpath('JMdict/entry').each do |entry_xml|
       entry = Entry.parse_from_nokogiri entry_xml
