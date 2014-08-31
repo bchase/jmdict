@@ -5,11 +5,11 @@ require 'jmdict/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "jmdict"
-  spec.version       = Jmdict::VERSION
+  spec.version       = JMDict::VERSION
   spec.authors       = ["Brad Chase"]
   spec.email         = ["brad@webappfromscratch.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A sloppy JMDict parser}
+  spec.description   = %q{A sloppy JMDict parser}
   spec.homepage      = ""
   spec.license       = "MIT"
 
