@@ -16,9 +16,13 @@ module JMDict
     Nokogiri::XML(file)
   end
 
+  def self.xml_entries
+    xml.xpath('JMdict/entry')
+  end
+
   def self.each_entry(&block)
-    xml.xpath('JMdict/entry').each do |entry_xml|
-      entry = Entry.parse_from_nokogiri entry_xml
+    xml_entries.each do |xml_entry|
+      entry = Entry.parse_from_nokogiri xml_entry
       yield entry
     end
   end
