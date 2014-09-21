@@ -5,7 +5,7 @@ require 'jmdict/entry'
 
 module JMDict
   def self.file_path
-    Pathname.new 'lib/dicts/jmdict.xml'
+    GEM_ROOT.join 'lib', 'dicts', 'jmdict.xml'
   end
 
   def self.file
