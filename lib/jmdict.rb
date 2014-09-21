@@ -4,8 +4,13 @@ require 'jmdict/version'
 require 'jmdict/entry'
 
 module JMDict
+  def self.root
+    spec = Gem::Specification.find_by_name 'jmdict'
+    Pathname.new spec.gem_dir
+  end
+
   def self.file_path
-    GEM_ROOT.join 'lib', 'dicts', 'jmdict.xml'
+    root.join 'lib', 'dicts', 'jmdict.xml'
   end
 
   def self.file
